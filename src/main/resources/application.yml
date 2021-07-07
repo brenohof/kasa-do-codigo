@@ -9,3 +9,13 @@ datasources:
     password: ${MYSQL_PASS:root}
     dialect: org.hibernate.dialect.MySQL5InnoDBDialect
 jpa.default.properties.hibernate.hbm2ddl.auto: update
+
+##
+# Jackson configuration
+# https://github.com/micronaut-projects/micronaut-core/issues/240
+# https://geowarin.com/correctly-handle-jsr-310-java-8-dates-with-jackson/
+# https://www.baeldung.com/jackson-serialize-dates
+##
+jackson:
+  serialization:
+    writeDatesAsTimestamps: false
