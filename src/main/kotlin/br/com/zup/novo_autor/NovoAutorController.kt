@@ -21,10 +21,5 @@ class NovoAutorController(val repository: AutorRepository) {
             .let { uri -> HttpResponse.created(uri) }
     }
 
-    @Get
-    fun listarAutores(): HttpResponse<List<DetalhaAutorResponse>> {
-        return repository.findAll()
-            .map { autor -> DetalhaAutorResponse(autor) }
-            .let { autores -> HttpResponse.ok(autores) }
-    }
+
 }

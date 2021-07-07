@@ -11,7 +11,7 @@ import javax.persistence.Table
 class Autor(
     val nome: String,
     val email: String,
-    val descricao: String
+    var descricao: String
 ) {
     @Id @GeneratedValue
     var id: Long? = null
