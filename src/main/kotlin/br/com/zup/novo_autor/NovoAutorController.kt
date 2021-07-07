@@ -11,6 +11,6 @@ class NovoAutorController {
 
     @Post
     fun cadastrarAutor(@Valid request: NovoAutorRequest) {
-        println(request)
+        request.paraAutor()
     }
 }
