@@ -7,10 +7,13 @@ import javax.validation.Valid
 
 @Validated
 @Controller("/autores")
-class NovoAutorController {
+class NovoAutorController(val repository: AutorRepository) {
 
     @Post
-    fun cadastrarAutor(@Valid request: NovoAutorRequest) {
-        request.paraAutor()
+    fun cadastrarAutor(@Valid request: NovoAutorRequest): Autor {
+        return request.paraAutor()
+            .also { println("Dados da requisição convertidos para um objeto de domínio.") }
+            .let { autor ->  repository.save(autor) }
+            .also { println("Dados persistidos no banco de dados.") }
     }
 }

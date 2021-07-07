@@ -38,6 +38,11 @@ dependencies {
     runtimeOnly("com.h2database:h2")
     implementation("io.micronaut:micronaut-validation")
 
+    // MySQL
+    testImplementation("org.testcontainers:mysql")
+    runtimeOnly("mysql:mysql-connector-java")
+    // runtime("io.micronaut.sql:micronaut-jdbc-hikari")
+
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
 
 }
