@@ -4,8 +4,6 @@ import io.micronaut.http.HttpResponse
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.PathVariable
 import io.micronaut.http.annotation.Put
-import io.micronaut.http.exceptions.HttpException
-import io.micronaut.http.exceptions.HttpStatusException
 
 @Controller("/autores")
 class AlteraAutorController(val autorRepository: AutorRepository) {
