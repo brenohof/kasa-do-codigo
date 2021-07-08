@@ -1,5 +1,8 @@
-package br.com.zup.novo_autor
+package br.com.zup.novo_autor.controllers
 
+import br.com.zup.novo_autor.AutorRepository
+import br.com.zup.novo_autor.EnderecoClient
+import br.com.zup.novo_autor.NovoAutorRequest
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Post
@@ -18,7 +21,8 @@ class NovoAutorController(
     @Post
     fun cadastrarAutor(@Valid request: NovoAutorRequest): HttpResponse<Any> {
         val enderecoResponse = try {
-            enderecoClient.consulta(request.cep)
+//            enderecoClient.consultaJSON(request.cep)
+            enderecoClient.consultaXML(request.cep)
         } catch (ex: HttpClientResponseException) {
             return HttpResponse.unprocessableEntity()
         }

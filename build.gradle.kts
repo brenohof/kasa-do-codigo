@@ -42,6 +42,9 @@ dependencies {
     runtimeOnly("com.h2database:h2")
     implementation("io.micronaut:micronaut-validation")
 
+    // XML
+    implementation("io.micronaut.xml:micronaut-jackson-xml")
+
     // MySQL
     testImplementation("org.testcontainers:mysql")
     runtimeOnly("mysql:mysql-connector-java")

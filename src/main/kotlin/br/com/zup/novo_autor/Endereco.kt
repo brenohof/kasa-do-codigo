@@ -9,8 +9,7 @@ class Endereco(
 ) {
     val cep= enderecoResponse.cep
     val logradouro = enderecoResponse.logradouro
-    val complemento = enderecoResponse.complemento
     val bairro = enderecoResponse.bairro
-    val cidade = enderecoResponse.localidade
-    val uf = enderecoResponse.uf
+    val cidade = enderecoResponse.cidade
+    val uf = enderecoResponse.estado
 }
