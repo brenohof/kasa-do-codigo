@@ -4,6 +4,7 @@ import br.com.zup.novo_autor.AutorRepository
 import br.com.zup.novo_autor.EnderecoClient
 import br.com.zup.novo_autor.NovoAutorRequest
 import io.micronaut.http.HttpResponse
+import io.micronaut.http.annotation.Body
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Post
 import io.micronaut.http.client.exceptions.HttpClientResponseException
@@ -19,7 +20,7 @@ class NovoAutorController(
 ) {
 
     @Post
-    fun cadastrarAutor(@Valid request: NovoAutorRequest): HttpResponse<Any> {
+    fun cadastrarAutor(@Body @Valid request: NovoAutorRequest): HttpResponse<Any> {
         val enderecoResponse = try {
 //            enderecoClient.consultaJSON(request.cep)
             enderecoClient.consultaXML(request.cep)
