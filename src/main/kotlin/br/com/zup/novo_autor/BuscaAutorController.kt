@@ -17,6 +17,7 @@ class BuscaAutorController(val repository: AutorRepository) {
         }
 
         val possivelAutor = repository.findByEmail(email)
+        //val possivelAutor = repository.buscaPorEmail(email)
 
         if (possivelAutor.isEmpty) return HttpResponse.notFound()
 

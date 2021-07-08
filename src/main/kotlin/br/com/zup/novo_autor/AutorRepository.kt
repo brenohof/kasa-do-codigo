@@ -1,5 +1,6 @@
 package br.com.zup.novo_autor
 
+import io.micronaut.data.annotation.Query
 import io.micronaut.data.annotation.Repository
 import io.micronaut.data.jpa.repository.JpaRepository
 import java.util.*
@@ -8,4 +9,7 @@ import java.util.*
 interface AutorRepository: JpaRepository<Autor, Long> {
 
     fun findByEmail(email: String): Optional<Autor>
+
+    @Query("SELECT a FROM Autor a WHERE a.email = :email")
+    fun buscaPorEmail(email: String): Optional<Autor>
 }
