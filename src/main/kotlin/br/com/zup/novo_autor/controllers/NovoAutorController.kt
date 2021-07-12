@@ -30,9 +30,11 @@ class NovoAutorController(
 
         return request.paraAutor(enderecoResponse.body()!!)
             .let { autor ->  repository.save(autor) }
+            .also { autor -> println(autor.toString()) }
             .let { autor -> UriBuilder.of("/autores/{id}")
                     .expand(mutableMapOf(Pair("id", autor.id))) }
             .let { uri -> HttpResponse.created(uri) }
+
     }
 
 

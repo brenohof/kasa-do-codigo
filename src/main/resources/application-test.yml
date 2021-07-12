@@ -1,0 +1,14 @@
+datasources:
+  default:
+    url: jdbc:h2:mem:testdb;MODE=PostgreSQL;DATABASE_TO_LOWER=true
+    driverClassName: org.h2.Driver
+
+##
+# Jackson configuration
+# https://github.com/micronaut-projects/micronaut-core/issues/240
+# https://geowarin.com/correctly-handle-jsr-310-java-8-dates-with-jackson/
+# https://www.baeldung.com/jackson-serialize-dates
+##
+jackson:
+  serialization:
+    writeDatesAsTimestamps: false

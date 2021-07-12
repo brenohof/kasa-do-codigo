@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test
 import javax.inject.Inject
 
 @MicronautTest
-class BuscaAutoresControllerTest {
+internal class BuscaAutoresControllerTest {
 
     @field:Inject
     lateinit var autorRepository: AutorRepository
