@@ -9,6 +9,7 @@ import io.micronaut.http.HttpStatus
 import io.micronaut.http.client.HttpClient
 import io.micronaut.http.client.annotation.Client
 import io.micronaut.test.annotation.MockBean
+import io.micronaut.test.annotation.TransactionMode
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
@@ -17,7 +18,11 @@ import org.mockito.Mock
 import org.mockito.Mockito
 import javax.inject.Inject
 
-@MicronautTest
+@MicronautTest(
+    rollback = false,
+    transactionMode = TransactionMode.SINGLE_TRANSACTION,
+    transactional = false
+)
 internal class NovoAutorControllerTest {
 
     @field:Inject
@@ -27,9 +32,11 @@ internal class NovoAutorControllerTest {
     @field:Client("/")
     lateinit var client: HttpClient
 
-    @Test
-    internal fun `deve cadastrar um novo autor`() {
-        val novoAutorRequest = NovoAutorRequest(
+    lateinit var novoAutorRequest: NovoAutorRequest
+
+    @BeforeEach
+    internal fun setUp() {
+        novoAutorRequest = NovoAutorRequest(
             "Rafael Pontes",
             "rafael.ponte@zup.com.br",
             "O principe dos oceanos.",
@@ -44,8 +51,12 @@ internal class NovoAutorControllerTest {
             "Rio de Janeiro",
             "RJ"
         )
-        Mockito.`when`(enderecoClient.consultaJSON(novoAutorRequest.cep)).thenReturn(HttpResponse.ok(enderecoResponse))
 
+        Mockito.`when`(enderecoClient.consultaJSON(novoAutorRequest.cep)).thenReturn(HttpResponse.ok(enderecoResponse))
+    }
+
+    @Test
+    internal fun `deve cadastrar um novo autor`() {
         val request = HttpRequest.POST("/autores", novoAutorRequest)
         val response = client.toBlocking().exchange(request, Any::class.java)
 
