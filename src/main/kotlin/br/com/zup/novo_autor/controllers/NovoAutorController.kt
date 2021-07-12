@@ -22,8 +22,8 @@ class NovoAutorController(
     @Post
     fun cadastrarAutor(@Body @Valid request: NovoAutorRequest): HttpResponse<Any> {
         val enderecoResponse = try {
-//            enderecoClient.consultaJSON(request.cep)
-            enderecoClient.consultaXML(request.cep)
+            enderecoClient.consultaJSON(request.cep)
+//            enderecoClient.consultaXML(request.cep)
         } catch (ex: HttpClientResponseException) {
             return HttpResponse.unprocessableEntity()
         }

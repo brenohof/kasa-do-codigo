@@ -12,7 +12,7 @@ class Autor(
     val nome: String,
     val email: String,
     var descricao: String,
-    val endereco: Endereco
+    var endereco: Endereco? = null
 ) {
     @Id @GeneratedValue
     var id: Long? = null

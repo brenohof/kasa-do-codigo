@@ -12,7 +12,7 @@ interface EnderecoClient {
     @Get(value = "/{cep}.json")
     fun consultaJSON(cep: String): HttpResponse<EnderecoResponse>
 
-    @Get(value = "/{cep}.xml")
-    @Consumes(MediaType.APPLICATION_XML)
-    fun consultaXML(cep: String): HttpResponse<EnderecoResponse>
+//    @Get(value = "/{cep}.xml")
+//    @Consumes(MediaType.APPLICATION_XML)
+//    fun consultaXML(cep: String): HttpResponse<EnderecoResponse>
 }

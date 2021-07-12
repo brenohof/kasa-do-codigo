@@ -43,7 +43,7 @@ dependencies {
     implementation("io.micronaut:micronaut-validation")
 
     // XML
-    implementation("io.micronaut.xml:micronaut-jackson-xml")
+    //implementation("io.micronaut.xml:micronaut-jackson-xml")
 
     // MySQL
     testImplementation("org.testcontainers:mysql")
